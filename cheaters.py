@@ -15,18 +15,11 @@ def cheaters() -> list:
             student_time = finish_times.get(
                 line[0], datetime.strptime("00:00", "%H:%M"))
             if time > student_time:
-                finish_times[line[0]] = line[3]
-    # for start_time in start_times:
-
-    print(len(finish_times))
-    # for student in finish_times:
-    #     print(student)
-    return []
+                finish_times[line[0]] = time
+    for name, start_time in start_times.items():
+        if (finish_times[name] - start_time).seconds > 10800:
+            result.append(name)
+    return result
 
 
-# start_time = datetime.strptime("17:00", "%H:%M")
-# finish_time = datetime.strptime("16:05", "%H:%M")
-
-# print(start_time > finish_time)
-
-cheaters()
+print(cheaters())
