@@ -20,6 +20,3 @@ def cheaters() -> list:
         if (finish_times[name] - start_time).seconds > 10800:
             result.append(name)
     return result
-
-
-print(cheaters())
